@@ -10,12 +10,27 @@
         gallons = parseFloat(gallons);
         var mpg = miles/gallons;
         mpg = parseInt(mpg);
-        alert("Miles per gallon = " + mpg);
+        //alert("Miles per gallon = " + mpg);
     </script>
 </head>
 <body>
     <main>
-        <h1>Thanks for using the Miles Per Gallon application</h1>
+        <h1>The Miles Per Gallon Application</h1>
+        <script>
+            document.writeln("Miles driven = " + miles);
+            document.writeln ("<br>");
+            document.writeln("Gallons of gas = " + gallons);
+        </script>
+        <p>
+        <script>
+            document.writeln("Miles per gallon = " + mpg);            
+        </script>
+        </p>
+        <p>
+        <script>
+            document.writeln("Thank you for using our MPG application");
+        </script>
+        </p>
     </main>
 </body>
 </html>
