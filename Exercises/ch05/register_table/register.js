@@ -11,8 +11,10 @@ var processEntries = function() {
     var country = $("country").value;
     var contact = "Text";
     if ($("email").checked) { contact = "Email"; }
+    if ($("mobile").checked) { contact = "Mobile"; }
     if ($("none").checked) { contact = "None"; }
     var terms = $("terms").checked;
+    var comments = $( "comments").value;
 
     if (email == "") {
         email = required;          
@@ -38,6 +40,8 @@ var processEntries = function() {
         html = html + "<tr><td>Country:</td><td>" + country + "</td></tr>";
         html = html + "<tr><td>Contact:</td><td>" + contact + "</td></tr>";
         html = html + "<tr><td>Terms:</td><td>" + terms + "</td></tr>";
+        html = html + "<tr><td>Coment:</td><td>Entry length = " + comments.length + "</td></tr>";
+
         $("registration_info").innerHTML = html;
     } else {
         $("registration_info").innerHTML = "";
