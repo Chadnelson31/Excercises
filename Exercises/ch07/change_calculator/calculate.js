@@ -4,7 +4,7 @@ var calculateChange = function() {
     var cents = parseInt($("cents").value);
 
     if(cents < 0 || cents > 99){
-        alert("Enter a number between 0 and 99");
+        alert("Please enter a valid number between 0 and 99");
     }
     else {
         var quarters = 25;
