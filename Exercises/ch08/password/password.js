@@ -22,9 +22,7 @@ var generatePassword = function() {
         $("password").value = "";
     } else {
         for (var i = 0; i < userInput; ++i) {
-            var random = getRandomNumber(67);
-            output.value += chars.charAt(random);
-            //output.value = random;
+            output.value += chars.charAt(getRandomNumber(67));
         }
     }
     
