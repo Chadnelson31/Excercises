@@ -1,7 +1,18 @@
+//standard get element function
 var $ = function (id) { return document.getElementById(id); };
 
-var displayScores = function () {   
-    
+//global arrays for storing data
+var score_value = [];
+var output = [];
+
+var total = 0;
+
+//
+var displayScores = function () {
+    for (i=0;i < score_value.length; i++) {
+        total += score_value[i];
+    }
+    total /= score_value.length;
 };
 
 var addScore = function () {
