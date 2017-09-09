@@ -5,18 +5,29 @@ var $ = function (id) { return document.getElementById(id); };
 var score_value = [];
 var output = [];
 
-var total = 0;
 
 //
 var displayScores = function () {
+    var total = 0;
     for (i=0;i < score_value.length; i++) {
         total += score_value[i];
     }
     total /= score_value.length;
+    $("average_score").value = total;
+    $("scores").value = output.join("\n");
+
 };
 
 var addScore = function () {
-    
+    var scorenum = parseInt($("score").value);
+    var name = $("last_name").value + ", " +
+        $("first_name").value + ": " +
+        scorenum;
+
+    output.push(name);
+    score_value.push(scorenum);
+
+    displayScores();
     
     // get the add form ready for next entry
     $("first_name").value = "";
@@ -25,8 +36,9 @@ var addScore = function () {
     $("first_name").focus();
 };
 
-var clearScores = function () {   
-
+var clearScores = function () {
+    score_value = [];
+    output = [];
     
     // remove the score data from the web page
     $("average_score").value = "";
@@ -35,8 +47,10 @@ var clearScores = function () {
     $("first_name").focus();
 };
 
-var sortScores = function () {   
-     
+var sortScores = function () {
+    output.sort();
+
+    displayScores();
 };
 
 window.onload = function () {
