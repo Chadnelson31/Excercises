@@ -3,7 +3,8 @@ var $ = function(id) { return document.getElementById(id); };
 
 var addToTaskList = function() { 
     var taskTextbox = $("task");
-    var newTask = new Task(taskTextbox.value);
+//    var newTask = new Task(taskTextbox.value);
+	var newTask = getTask(taskTextbox.value);
     if (newTask.isValid()) {
         tasklist.add(newTask);
         tasklist.save();
@@ -23,8 +24,21 @@ var clearTaskList = function() {
 var deleteFromTaskList = function() {
     tasklist.delete(this.title); // 'this' = clicked link
     tasklist.save();
-    tasklist.display();   
+    tasklist.display(); 
     $("task").focus();
+};
+
+var editTaskListItem = function() {
+    var newText = prompt("Replacement Text:", tasklist.tasks[this.title]);  // 'this' = clicked link
+//    var editedTask = new Task(newText);
+	var editedTask = getTask(newText);
+	if (editedTask.isValid()) {
+		tasklist.edit(this.title, editedTask).save().display(); 
+    	$("task").focus();
+	}
+	else {
+		alert("Please enter a valid task");
+	}
 };
 
 window.onload = function() {
@@ -33,6 +47,7 @@ window.onload = function() {
     
     tasklist.displayDiv = $("tasks");
     tasklist.deleteClickHandler = deleteFromTaskList;
+	tasklist.editClickHandler = editTaskListItem;
     
     tasklist.load();
     tasklist.display();
